@@ -1,6 +1,6 @@
 
 big_integer::big_integer() {
-    this->is_negetive = false;
+    this->positivity = false;
     this->integer_length = 0;
     this->integer_part.empty();
     return;
@@ -21,7 +21,7 @@ big_integer::big_integer(const int &number) {
 }
 
 big_integer::big_integer(const big_integer &number) {
-    this->is_negetive = number.is_negetive;
+    this->positivity = number.positivity;
     this->integer_length = number.integer_length;
     this->integer_part = number.integer_part;
 }
@@ -39,7 +39,7 @@ big_integer::big_integer(const std::string &number) {
             }
         }
     } else if (number[0] == '-') {
-        this->is_negetive = true;
+        this->positivity = true;
         this->integer_length = number.length() - 1;
         for (int i = this->integer_length; i >= 1; i--) {
             if (isdigit(number[i])) {
@@ -67,7 +67,7 @@ big_integer::big_integer(const char *number) {
             }
         }
     } else if (number[0] == '-') {
-        this->is_negetive = true;
+        this->positivity = true;
         this->integer_length = strlen(number) - 1;
         for (int i = this->integer_length; i >= 1; i--) {
             if (isdigit(number[i])) {
@@ -93,7 +93,7 @@ void big_integer::operator=(const int &number) {
 }
 
 void big_integer::operator=(const big_integer &number) {
-    this->is_negetive = number.is_negetive;
+    this->positivity = number.positivity;
     this->integer_length = number.integer_length;
     this->integer_part = number.integer_part;
 }
@@ -111,7 +111,7 @@ void big_integer::operator=(const std::string &number) {
             }
         }
     } else if (number[0] == '-') {
-        this->is_negetive = true;
+        this->positivity = true;
         this->integer_length = number.length() - 1;
         for (int i = this->integer_length; i >= 1; i--) {
             if (isdigit(number[i])) {
@@ -141,7 +141,7 @@ void big_integer::operator=(const char *number) {
             }
         }
     } else if (number[0] == '-') {
-        this->is_negetive = true;
+        this->positivity = true;
         this->integer_length = strlen(number) - 1;
         for (int i = this->integer_length; i >= 1; i--) {
             if (isdigit(number[i])) {
@@ -168,11 +168,11 @@ std::istream &operator>>(std::istream &in, big_integer &number) {
 }
 
 std::ostream &operator<<(std::ostream &out, big_integer &number) {
-    if (number.is_negetive) {
-        printf("-");
+    if (number.positivity) {
+        std::cout << '-';
     }
     for (int i = number.integer_length - 1; i >= 0; i--) {
-        printf("%d", number.integer_part[i]);
+        std::cout << number.integer_part[i];
     }
     return out;
 }

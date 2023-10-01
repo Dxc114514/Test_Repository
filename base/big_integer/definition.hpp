@@ -1,6 +1,6 @@
+#include <bits/stdc++.h>
 
-#include <iostream>
-#include <vector>
+#define END_ON_BASE 10
 
 typedef int length_type;
 typedef unsigned char digit_type;
@@ -55,6 +55,7 @@ class big_integer {
     // void division(big_integer &number1,big_integer &number2);
 
 };
+
 
 #include "declaration/io.cpp"
 

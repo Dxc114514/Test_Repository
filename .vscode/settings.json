@@ -35,6 +35,5 @@
         ]
     },
     "notebook.output.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
-    "terminal.integrated.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
-
+    "terminal.integrated.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace"
 }
