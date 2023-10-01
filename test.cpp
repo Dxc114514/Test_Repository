@@ -1,9 +1,14 @@
-#include <bits/stdc++.h>
-#include "base/big_integer/base_class.hpp"
+#include "base/big_integer/definition.hpp"
 using namespace std;
-int main(){
-    big_integer test;
-    cin>>test;
-    cout<<test;
+
+int main() {
+    big_integer a = "1234567891234567891234567891234567891234567891234567891234"
+                    "56789123456789"
+                    "1234567891234567891234567891234567891234567891234567891234"
+                    "56789123456789"
+                    "1234567891234567891234567891234567891234567891234567891234"
+                    "56789123456789"
+                    "123456789123456789123456789123456789123456789123456789";
+    cout << a;
     return 0;
 }
