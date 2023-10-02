@@ -1,178 +1,95 @@
 
-big_integer::big_integer() {
+/// @brief construct an empty number
+BigInteger::BigInteger() {
     this->positivity = false;
-    this->integer_length = 0;
-    this->integer_part.empty();
+    this->integerLength = 0;
+    this->integerPart.clear();
     return;
 }
 
-big_integer::big_integer(const int &number) {
+
+/// @brief construct a number from a integer
+/// @param number the number to be equaled
+BigInteger::BigInteger(const int &number) {
     int tmp_number = number;
-    if (tmp_number <= 0) {
-        this->positivity = -1;
+    if (tmp_number < 0) {
+        this->positivity = true;
         tmp_number = -tmp_number;
     }
     while (tmp_number > 0) {
-        this->integer_part.push_back(tmp_number % END_ON_BASE);
+        this->integerPart.push_back(tmp_number % END_ON_BASE);
         tmp_number /= END_ON_BASE;
     }
-    this->integer_length = this->integer_part.size();
+    this->integerLength = this->integerPart.size();
     return;
 }
 
-big_integer::big_integer(const big_integer &number) {
+
+/// @brief construct a number from a BigInteger
+/// @param number the number to be copied
+BigInteger::BigInteger(const BigInteger &number) {
     this->positivity = number.positivity;
-    this->integer_length = number.integer_length;
-    this->integer_part = number.integer_part;
+    this->integerLength = number.integerLength;
+    this->integerPart = number.integerPart;
 }
 
-big_integer::big_integer(const std::string &number) {
-    if (isdigit(number[0])) {
-        this->integer_length = number.length();
-        for (int i = this->integer_length - 1; i >= 0; i--) {
-            if (isdigit(number[i])) {
-                this->integer_part.push_back(number[i] - '0');
-            } else if (isupper(number[i])) {
-                this->integer_part.push_back(number[i] - 'A' + 10);
-            } else if (islower(number[i])) {
-                this->integer_part.push_back(number[i] - 'a' + 10);
-            }
-        }
-    } else if (number[0] == '-') {
-        this->positivity = true;
-        this->integer_length = number.length() - 1;
-        for (int i = this->integer_length; i >= 1; i--) {
-            if (isdigit(number[i])) {
-                this->integer_part.push_back(number[i] - '0');
-            } else if (isupper(number[i])) {
-                this->integer_part.push_back(number[i] - 'A' + 10);
-            } else if (islower(number[i])) {
-                this->integer_part.push_back(number[i] - 'a' + 10);
-            }
+
+
+BigInteger::BigInteger(const std::string &number) {
+    if (number.empty()) {   
+        this->positivity = false;
+        this->integerLength = 0;
+        this->integerPart.clear();
+    }
+    int i = this->integerLength - 1, end = 0;
+    // if is negetive number
+    if (number[0] == '-') i++, end++;
+    for (; i >= end; i--) {
+        if (isdigit(number[i])) {
+            this->integerPart.push_back(number[i] - '0');
+        } else if (isupper(number[i])) {
+            this->integerPart.push_back(number[i] - 'A' + 10);
+        } else if (islower(number[i])) {
+            this->integerPart.push_back(number[i] - 'a' + 10);
+        } else {
+            throw(BigIntegerException("illegal input"));
         }
     }
-    return;
 }
 
-big_integer::big_integer(const char *number) {
-    if (isdigit(number[0])) {
-        this->integer_length = strlen(number);
-        for (int i = this->integer_length - 1; i >= 0; i--) {
-            if (isdigit(number[i])) {
-                this->integer_part.push_back(number[i] - '0');
-            } else if (isupper(number[i])) {
-                this->integer_part.push_back(number[i] - 'A' + 10);
-            } else if (islower(number[i])) {
-                this->integer_part.push_back(number[i] - 'a' + 10);
-            }
-        }
-    } else if (number[0] == '-') {
-        this->positivity = true;
-        this->integer_length = strlen(number) - 1;
-        for (int i = this->integer_length; i >= 1; i--) {
-            if (isdigit(number[i])) {
-                this->integer_part.push_back(number[i] - '0');
-            } else if (isupper(number[i])) {
-                this->integer_part.push_back(number[i] - 'A' + 10);
-            } else if (islower(number[i])) {
-                this->integer_part.push_back(number[i] - 'a' + 10);
-            }
-        }
-    }
-    return;
-}
 
-void big_integer::operator=(const int &number) {
+void BigInteger::operator=(const int &number) {
     int tmp_number = number;
     while (tmp_number > 0) {
-        this->integer_part.push_back(tmp_number % END_ON_BASE);
+        this->integerPart.push_back(tmp_number % END_ON_BASE);
         tmp_number /= END_ON_BASE;
     }
-    this->integer_length = this->integer_part.size();
+    this->integerLength = this->integerPart.size();
     return;
 }
 
-void big_integer::operator=(const big_integer &number) {
+void BigInteger::operator=(const BigInteger &number) {
     this->positivity = number.positivity;
-    this->integer_length = number.integer_length;
-    this->integer_part = number.integer_part;
-}
-
-void big_integer::operator=(const std::string &number) {
-    if (isdigit(number[0])) {
-        this->integer_length = number.length();
-        for (int i = this->integer_length - 1; i >= 0; i--) {
-            if (isdigit(number[i])) {
-                this->integer_part.push_back(number[i] - '0');
-            } else if (isupper(number[i])) {
-                this->integer_part.push_back(number[i] - 'A' + 10);
-            } else if (islower(number[i])) {
-                this->integer_part.push_back(number[i] - 'a' + 10);
-            }
-        }
-    } else if (number[0] == '-') {
-        this->positivity = true;
-        this->integer_length = number.length() - 1;
-        for (int i = this->integer_length; i >= 1; i--) {
-            if (isdigit(number[i])) {
-                this->integer_part.push_back(number[i] - '0');
-            } else if (isupper(number[i])) {
-                this->integer_part.push_back(number[i] - 'A' + 10);
-            } else if (islower(number[i])) {
-                this->integer_part.push_back(number[i] - 'a' + 10);
-            }
-        }
-    }
+    this->integerLength = number.integerLength;
+    this->integerPart = number.integerPart;
     return;
 }
 
-void big_integer::operator=(const char *number) {
-    if (isdigit(number[0])) {
-        this->integer_length = strlen(number);
-        for (int i = this->integer_length - 1; i >= 0; i--) {
-            if (isdigit(number[i])) {
-                this->integer_part.push_back(number[i] - '0');
-            } else if (isupper(number[i])) {
-                this->integer_part.push_back(number[i] - 'A' + 10);
-            } else if (islower(number[i])) {
-                this->integer_part.push_back(number[i] - 'a' + 10);
-            } else {
-                throw "illegal_input";
-            }
-        }
-    } else if (number[0] == '-') {
-        this->positivity = true;
-        this->integer_length = strlen(number) - 1;
-        for (int i = this->integer_length; i >= 1; i--) {
-            if (isdigit(number[i])) {
-                this->integer_part.push_back(number[i] - '0');
-            } else if (isupper(number[i])) {
-                this->integer_part.push_back(number[i] - 'A' + 10);
-            } else if (islower(number[i])) {
-                this->integer_part.push_back(number[i] - 'a' + 10);
-            } else {
-                throw "illegal_input";
-            }
-        }
-    } else {
-        throw "illegal_input";
-    }
-    return;
-}
 
-std::istream &operator>>(std::istream &in, big_integer &number) {
+
+std::istream &operator>>(std::istream &in, BigInteger &number) {
     std::string tmp_string;
     in >> tmp_string;
     number = tmp_string;
     return in;
 }
 
-std::ostream &operator<<(std::ostream &out, big_integer &number) {
-    if (number.positivity) {
+std::ostream &operator<<(std::ostream &out, BigInteger &number) {
+    if (number.positivity == true) {
         std::cout << '-';
     }
-    for (int i = number.integer_length - 1; i >= 0; i--) {
-        std::cout << number.integer_part[i];
+    for (int i = number.integerLength - 1; i >= 0; i--) {
+        std::cout << int(number.integerPart[i]);
     }
     return out;
 }

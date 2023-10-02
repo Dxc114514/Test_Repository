@@ -35,5 +35,17 @@
         ]
     },
     "notebook.output.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
-    "terminal.integrated.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace"
+    "terminal.integrated.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
+    "clangd.arguments": [
+        "--background-index",
+        "--compile-commands-dir=build",
+        "-j=12",
+        "--query-driver=/usr/bin/clang++",
+        "--clang-tidy",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--function-arg-placeholders",
+        "--header-insertion=iwyu",
+        "--pch-storage=disk",
+    ]
 }
