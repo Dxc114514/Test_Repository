@@ -1,7 +1,5 @@
 #include <bits/stdc++.h>
 
-namespace StdBigInteger {
-
 #define END_ON_BASE 10
 
 typedef int length_type;
@@ -45,9 +43,6 @@ class BigInteger {
     // BigInteger operator+(const BigInteger &number);
     // BigInteger operator+=(const BigInteger &number);
 
-    // high_accur operator-(const high_accur &number);
-    // high_accur operator*(const high_accur &number);
-    // high_accur operator/(const high_accur &number);
 
   private:
     bool isEmptyNumber();
@@ -75,7 +70,6 @@ class BigIntegerException : std::exception {
     virtual const char *what() { return message; }
 };
 
-}; // namespace StdBigInteger
 
 
 #include "declaration/io.cpp"

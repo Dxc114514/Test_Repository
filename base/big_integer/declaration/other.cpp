@@ -1,5 +1,5 @@
 
-namespace StdBigInteger {
+
 
 
 digit_type BigInteger::transCharToDec(const char &tmp_char) {
@@ -17,4 +17,4 @@ digit_type BigInteger::transCharToDec(const char &tmp_char) {
 
 
 
-}; // namespace StdBigInteger
+// namespace StdBigInteger

@@ -1,11 +1,14 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include "base/big_integer/definition.hpp"
-using namespace std;
-using StdBigInteger::BigInteger;
 
 int main() {
-    BigInteger number;
-    cin >> number;
-    cout << number;
+    try {
+        std::string number;
+        std::cin >> number;
+        BigInteger test(number);
+        std::cout << test;
+    } catch (BigIntegerException e) {
+        std::cout << e.what();
+    }
     return 0;
 }
