@@ -23,6 +23,7 @@
     "editor.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
     "editor.fontLigatures": "'calt','ss01'",
     "editor.fontSize": 16,
+    "editor.fontWeight": 700,
     "editor.suggest.snippetsPreventQuickSuggestions": false,
     "editor.tokenColorCustomizations": {
         "textMateRules": [
@@ -57,8 +58,8 @@
             }
         ]
     },
-    "notebook.output.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
-    "terminal.integrated.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
+    "notebook.output.fontFamily": "Cascadia Code Semibold, Microsoft Yahei UI Regular, monospace",
+    "terminal.integrated.fontFamily": "Cascadia Code Semibold, Microsoft Yahei UI Regular, monospace",
     "editor.bracketPairColorization.enabled": true,
     "C_Cpp.errorSquiggles": "enabledIfIncludesResolve",
 }
