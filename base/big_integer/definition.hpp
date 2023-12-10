@@ -2,8 +2,9 @@
 
 #define END_ON_BASE 10
 
-typedef int length_type;
-typedef unsigned char digit_type;
+typedef int lengthType;
+typedef unsigned char digitType;
+typedef int numberType;
 
 /// @brief the class to storage an big integer
 /// @brief it has a size of 32 bit
@@ -12,8 +13,8 @@ class BigInteger {
 
   public:
     bool positivity;
-    length_type integerLength;
-    std::vector<digit_type> integerPart;
+    lengthType integerLength;
+    std::vector<digitType> integerPart;
 
   public:
     BigInteger();
@@ -37,22 +38,19 @@ class BigInteger {
     bool operator<(const BigInteger &number);
     bool operator<=(const BigInteger &number);
 
-    // BigInteger operator++();
-    // BigInteger operator+(const int &number);
-    // BigInteger operator+=(const int &number);
-    // BigInteger operator+(const BigInteger &number);
-    // BigInteger operator+=(const BigInteger &number);
+    BigInteger operator++();
+    BigInteger operator+(const int &number);
+    BigInteger operator+=(const int &number);
+    BigInteger operator+(const BigInteger &number);
+    BigInteger operator+=(const BigInteger &number);
 
 
   private:
-    bool isEmptyNumber();
-    bool setToEmptyNumber();
-    digit_type transCharToDec(const char &tmp_char);
-    void recaculateLength(const length_type &max_length);
+    digitType transCharToDec(const char &tmp_char);
+    void recaculateLength(const lengthType &max_length);
 
-    // void add_int(const BigInteger &number, const int &number1);
-    // void add_high_accur(const BigInteger &number1, const BigInteger
-    // &number2);
+    void add_int(BigInteger &number, const int &integer);
+    BigInteger add_high_accur(BigInteger &number1, BigInteger &number2);
 
     // void subtraction(BigInteger &number1,BigInteger &number2);
     // void multiplication(BigInteger &number1,BigInteger &number2);
@@ -77,3 +75,5 @@ class BigIntegerException : std::exception {
 #include "declaration/other.cpp"
 
 #include "declaration/comparison_operator.cpp"
+
+#include "declaration/arithmetic_operator.cpp"

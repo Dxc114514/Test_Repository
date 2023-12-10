@@ -12,7 +12,7 @@ BigInteger::BigInteger() {
 
 /// @brief construct a number from a integer
 /// @param number the number to be equaled
-BigInteger::BigInteger(const int &number) {
+BigInteger::BigInteger(const numberType &number) {
     this->positivity = false;
     this->integerLength = 0;
     this->integerPart.clear();
@@ -47,12 +47,12 @@ BigInteger::BigInteger(const std::string &number) {
     this->positivity = false;
     this->integerLength = 0;
     this->integerPart.clear();
-    int i = number.length() - 1, end = 0;
+    lengthType i = number.length() - 1, end = 0;
     // if is negetive number
     if (number[0] == '-') end++, this->positivity = true;
     int tmp = 0;
     for (; i >= end; i--) {
-        if ((tmp = this->transCharToDec(number[i])) != digit_type(-1)) {
+        if ((tmp = this->transCharToDec(number[i])) != digitType(-1)) {
             this->integerPart.push_back(tmp);
             this->integerLength++;
         } else {
@@ -69,12 +69,12 @@ BigInteger::BigInteger(const char *&number) {
     this->positivity = false;
     this->integerLength = 0;
     this->integerPart.clear();
-    int i = strlen(number) - 1, end = 0;
+    lengthType i = strlen(number) - 1, end = 0;
     // if is negetive number
     if (number[0] == '-') end++, this->positivity = true;
     int tmp = 0;
     for (; i >= end; i--) {
-        if ((tmp = this->transCharToDec(number[i])) != digit_type(-1)) {
+        if ((tmp = this->transCharToDec(number[i])) != digitType(-1)) {
             this->integerPart.push_back(tmp);
             this->integerLength++;
         } else {
@@ -87,11 +87,11 @@ BigInteger::BigInteger(const char *&number) {
 
 /// @brief constrcut a number from std::string
 /// @param number the number to be equaled
-void BigInteger::operator=(const int &number) {
+void BigInteger::operator=(const numberType &number) {
     this->positivity = false;
     this->integerLength = 0;
     this->integerPart.clear();
-    int tmp_number = number;
+    numberType tmp_number = number;
     if (tmp_number < 0) {
         this->positivity = true;
         tmp_number = -tmp_number;
@@ -123,12 +123,12 @@ void BigInteger::operator=(const std::string &number) {
     this->positivity = false;
     this->integerLength = 0;
     this->integerPart.clear();
-    int i = number.length() - 1, end = 0;
+    lengthType i = number.length() - 1, end = 0;
     // if is negetive number
     if (number[0] == '-') end++, this->positivity = true;
     int tmp = 0;
     for (; i >= end; i--) {
-        if ((tmp = this->transCharToDec(number[i])) != digit_type(-1)) {
+        if ((tmp = this->transCharToDec(number[i])) != digitType(-1)) {
             this->integerPart.push_back(tmp);
             this->integerLength++;
         } else {
@@ -145,12 +145,12 @@ void BigInteger::operator=(const char *&number) {
     this->positivity = false;
     this->integerLength = 0;
     this->integerPart.clear();
-    int i = strlen(number) - 1, end = 0;
+    lengthType i = strlen(number) - 1, end = 0;
     // if is negetive number
     if (number[0] == '-') end++, this->positivity = true;
     int tmp = 0;
     for (; i >= end; i--) {
-        if ((tmp = this->transCharToDec(number[i])) != digit_type(-1)) {
+        if ((tmp = this->transCharToDec(number[i])) != digitType(-1)) {
             this->integerPart.push_back(tmp);
             this->integerLength++;
         } else {
@@ -183,7 +183,7 @@ std::ostream &operator<<(std::ostream &out, BigInteger &number) {
     if (number.positivity == true) {
         out << "-";
     }
-    for (int i = number.integerLength - 1; i >= 0; i--) {
+    for (lengthType i = number.integerLength - 1; i >= 0; i--) {
         out << int(number.integerPart[i]);
     }
     return out;

@@ -2,18 +2,21 @@
 
 
 
-digit_type BigInteger::transCharToDec(const char &tmp_char) {
-    if (isdigit(tmp_char)) {
-        return int(tmp_char - '0');
-    } else if (isupper(tmp_char)) {
-        return int(tmp_char - 'A' + 10);
-    } else if (islower(tmp_char)) {
-        return int(tmp_char - 'a' + 10);
+digitType BigInteger::transCharToDec(const char &tmpChar) {
+    if (isdigit(tmpChar)) {
+        return int(tmpChar - '0');
+    } else if (isupper(tmpChar)) {
+        return int(tmpChar - 'A' + 10);
+    } else if (islower(tmpChar)) {
+        return int(tmpChar - 'a' + 10);
     }
     return -1;
 }
 
-
+void recaculateLength(const lengthType &maxLength) {
+    for (lengthType i = maxLength; i >= 0; i--) {
+    }
+}
 
 
 
