@@ -1,0 +1,8 @@
+[
+{
+  "directory": "/home/xanchengd/Test_Repository/build",
+  "command": "/usr/bin/clang++   -g -o CMakeFiles/calculator.dir/main.cpp.o -c /home/xanchengd/Test_Repository/main.cpp",
+  "file": "/home/xanchengd/Test_Repository/main.cpp",
+  "output": "CMakeFiles/calculator.dir/main.cpp.o"
+}
+]

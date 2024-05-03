@@ -1,5 +1,5 @@
 {
-    "editor.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
+    "editor.fontFamily": "Source Code Pro",
     "editor.fontLigatures": "'calt','ss01'",
     "editor.tokenColorCustomizations": {
         "textMateRules": [
@@ -34,8 +34,11 @@
             }
         ]
     },
-    "notebook.output.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
-    "terminal.integrated.fontFamily": "Cascadia Code, Microsoft Yahei UI Regular, monospace",
+    "editor.mouseWheelZoom": true,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "notebook.output.fontFamily": "Source Code Pro",
+    "terminal.integrated.fontFamily": "Source Code Pro",
     "clangd.arguments": [
         "--background-index",
         "--compile-commands-dir=build",
